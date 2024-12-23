@@ -3008,6 +3008,10 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 1164622875}
+    - target: {fileID: 5553197840079149418, guid: 7296e6fc7f7a6004e8d6263b4f50ed1f, type: 3}
+      propertyPath: speedThreshold
+      value: 7.9
+      objectReference: {fileID: 0}
     - target: {fileID: 7348683232152640445, guid: 7296e6fc7f7a6004e8d6263b4f50ed1f, type: 3}
       propertyPath: coll
       value: 
