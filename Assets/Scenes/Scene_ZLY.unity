@@ -609,6 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4422bd1b39706e248aa9e0dcf2aeecdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayTime: 2
 --- !u!61 &946441560
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3031,6 +3032,10 @@ PrefabInstance:
       propertyPath: groundCheckHeight
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 7643192449410594249, guid: 7296e6fc7f7a6004e8d6263b4f50ed1f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 8846afda47a584264b853490c9f43d09, type: 2}
     - target: {fileID: 8277090334324658715, guid: 7296e6fc7f7a6004e8d6263b4f50ed1f, type: 3}
       propertyPath: cherriesText
       value: 
