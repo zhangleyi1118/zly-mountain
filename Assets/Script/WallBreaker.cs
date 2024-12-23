@@ -3,9 +3,9 @@ using UnityEngine.Tilemaps;
 
 public class WallBreaker : MonoBehaviour
 {
-    public float speedThreshold = 10f;  // Éè¶¨Ò»¸öËÙ¶ÈãĞÖµ£¬µ±½ÇÉ«ËÙ¶È³¬¹ı´ËÖµÊ±ÆÆ»µ×©¿é
-    public Tilemap tilemap;  // ÒıÓÃ Tilemap
-    public Tile brokenTile;  // ±»ÆÆ»µºóµÄ×©¿éÍ¼°¸£¨¿ÉÑ¡£©
+    public float speedThreshold = 10f;  // è®¾ç½®ä¸€ä¸ªé€Ÿåº¦é˜ˆå€¼ï¼Œå½“è§’è‰²é€Ÿåº¦è¶…è¿‡è¿™ä¸ªé˜ˆå€¼æ—¶ä¼šç ´åç –å—
+    public Tilemap tilemap;  // ç –å—çš„ Tilemap
+    public Tile brokenTile;  // è¢«ç ´åçš„ç –å—çš„å›¾ç‰‡
 
     private Rigidbody2D rb;
 
@@ -16,26 +16,27 @@ public class WallBreaker : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // ¼ì²é½ÇÉ«ÓëÇ½ÌåÅö×²Ê±µÄËÙ¶È
-        if (collision.relativeVelocity.magnitude > speedThreshold)
+        // åªè€ƒè™‘ç«–ç›´æ–¹å‘çš„é€Ÿåº¦åˆ†é‡çš„ç»å¯¹å€¼
+        float verticalSpeed = Mathf.Abs(collision.relativeVelocity.y);
+        
+        if (verticalSpeed > speedThreshold)
         {
-            // ¼ì²âµ½ÓëÇ½ÌåµÄÅö×²ÇÒËÙ¶È´óÓÚãĞÖµ£¬¿ªÊ¼ÆÆ»µÇ½Ìå¿é
             DestroyTileAtContact(collision.contacts[0].point);
         }
     }
 
-    // ¸ù¾İÅö×²Î»ÖÃÀ´ÆÆ»µ¶ÔÓ¦µÄ Tile
+    // æ ¹æ®ç¢°æ’ç‚¹çš„ä½ç½®ï¼Œé”€æ¯å¯¹åº”çš„ Tile
     void DestroyTileAtContact(Vector2 contactPoint)
     {
-        // »ñÈ¡ÊÀ½ç¿Õ¼äÖĞµÄÅö×²µã£¬²¢×ª»»Îª Tilemap ¿Õ¼äÖĞµÄ×ø±ê
+        // è·å–ç¢°æ’ç‚¹çš„ä¸–ç•Œåæ ‡ï¼Œè½¬æ¢ä¸º Tilemap çš„å±€éƒ¨åæ ‡
         Vector3Int tilePosition = tilemap.WorldToCell(contactPoint);
 
-        // ¼ì²é¸ÃÎ»ÖÃÊÇ·ñ´æÔÚ×©¿é£¬Èç¹û´æÔÚÔòÉ¾³ı
+        // åˆ¤æ–­è¯¥ä½ç½®æ˜¯å¦æœ‰ç –å—ï¼Œå¦‚æœæœ‰åˆ™é”€æ¯
         if (tilemap.HasTile(tilePosition))
         {
-            // Ïú»Ù¸Ã×©¿é
-            tilemap.SetTile(tilePosition, null); // ¿ÉÑ¡£ºÌæ»»ÎªÆÆ»µºóµÄ×©¿éÍ¼°¸
-            // »òÕßÖ±½ÓÓÃ tilemap.SetTile(tilePosition, null); À´É¾³ı×©¿é
+            // é”€æ¯ç –å—
+            tilemap.SetTile(tilePosition, null); // å°†é€‰ä¸­çš„ç –å—æ›¿æ¢ä¸ºè¢«ç ´åçš„ç –å—å›¾ç‰‡
+            // ç›´æ¥ä½¿ç”¨ tilemap.SetTile(tilePosition, null); é”€æ¯ç –å—
         }
     }
 }

@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class item_collector : MonoBehaviour
 {
-    // ¼ÇÂ¼ÊÕ¼¯µ½µÄÓ£ÌÒÊýÁ¿
-    private int cherries = 0;
+    // cherryæ•°é‡å­˜å‚¨åœ¨è¿™ä¸ªç§æœ‰å˜é‡ä¸­
+    [SerializeField] private int cherries = 0;
 
     [SerializeField] private Text cherriesText;
 
+    // å½“ç¢°åˆ°æ¨±æ¡ƒæ—¶å¢žåŠ æ•°é‡
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // µ±Åöµ½Ó£ÌÒÊ±£¬Ïú»ÙÓ£ÌÒ²¢Ôö¼ÓÓ£ÌÒÊýÁ¿
         if (collision.gameObject.CompareTag("Cherry"))
         {
             Destroy(collision.gameObject);
@@ -21,13 +21,13 @@ public class item_collector : MonoBehaviour
         }
     }
 
-    // »ñÈ¡µ±Ç°Ó£ÌÒÊýÁ¿
+    // èŽ·å–å½“å‰æ¨±æ¡ƒæ•°é‡çš„æ–¹æ³•
     public int GetCherries()
     {
         return cherries;
     }
 
-    // ÏûºÄÒ»¸öÓ£ÌÒ
+    // æ¶ˆè€—æ¨±æ¡ƒçš„æ–¹æ³•
     public void ConsumeCherry()
     {
         if (cherries > 0)

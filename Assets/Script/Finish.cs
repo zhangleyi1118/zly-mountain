@@ -8,6 +8,7 @@ public class Finish : MonoBehaviour
     private AudioSource finishSound;
 
     private bool levelCompleted = false;
+    [SerializeField] private float delayTime = 2f;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class Finish : MonoBehaviour
         {
            
             levelCompleted = true;
-            Invoke("CompleteLevel", 2f);
+            Invoke("CompleteLevel", delayTime);
 
         }
     }
